@@ -3,7 +3,7 @@
   (:use clojure.test))
 
 (def files
-  (mf/get-migration-files "test/clj_sql_up/migrations"))
+  (mf/get-migration-file-names "test/clj_sql_up/migrations"))
 
 (deftest get-migration-files
   (is (= files ["20130719212020374-zzz.clj" "20130719212023948-ccc.clj"

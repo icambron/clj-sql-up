@@ -29,12 +29,11 @@
      :row-fn #(files/migration-filename
                  (:name %) migration-files))))
 
-
 (defn pending-migrations
   [db]
   (let [migration-files (files/get-migration-files)]
-    (sort (set/difference (set migration-files)
-                          (set (completed-migrations db migration-files))))))
+    (sort-by str (set/difference (set migration-files)
+                                 (set (completed-migrations db migration-files))))))
 
 (defn run-migrations [db files direction]
   (doseq [file files]
